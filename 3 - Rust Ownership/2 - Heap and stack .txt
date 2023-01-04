@@ -1,6 +1,21 @@
-    // -------------------------------------------
-    // 			Heap and Stack 
-    // -------------------------------------------
+// -------------------------------------------
+// 			Heap and Stack 
+// -------------------------------------------
+
+// The four sections of computer memory that we can use are:
+//      Heap
+//      Stack
+//      Static/Global
+//      Code/Text
+
+// When the code below is run:
+// MAX_VALUE is added to the Global memory.
+// Three frames are incrementally added to the Stack:
+//     'main' containing, x, y, sum_value.
+//     'square_sum' containing num1, num2, result.
+//     'square' containing num.
+//
+// And as the code below runs, the Global memory and Stack are incrementally cleared.
 
 const MAX_VALUE:i32 =    40_000; 
 /*
@@ -21,14 +36,25 @@ fn square(num:i32) -> i32 {
 }
 */ 
 
-fn main() 
-{
-let x: i32 = 5; 
+// ------------------------------------------------------------------------------------------------------------
+// Now let's discuss both the Stack and Heap, as consider how the main() code-block below is executed by Rust:
+// One frame-scope is added to the Stack, where the following Stack and Heap references change, as follows in the following steps:
+//     'x' is added to the frame-Stack and its value is assigned to the heap at location 'heap1', an int.
+//     's1' is added to the frame-Stack and its value is assigned to the heap at location 'heap2', a string.
+//     's2' is added to the frame-Stack. The assignment operation removes 's1' from the frame-Stack, and then assigns the 'heap2' string location to 's2'.
+//     's3' is added to the frame-Stack, and its value is also assigned to 'heap2', a string. Thus both 's2' and 's3' now point to the same 'heap2' string, but 's2' is still the owner of 'heap2'.
+//     's4' is added to the frame-Stack, and its value is assigned to the heap at location 'heap3', string, which contains a new copy of the 'heap2' string.
+//
+// When end of the main code block is reached, 
+//      Rust clears the memory for all of the Stack and Heap values associated with the main() frame-Stack, 
+//      releases the frame-Stack itself, 
+//      and the program ends.
+// ------------------------------------------------------------------------------------------------------------
 
-let s1 = String::from("some string");  
-let s2 = s1; 
-let s3 = &s2; 
-let s4 = s2.clone(); 
-
-
-}         
+fn main() {
+	let x: i32 = 5; 
+	let s1 = String::from("some string");  
+	let s2 = s1; 
+	let s3 = &s2; 
+	let s4 = s2.clone(); 
+}
