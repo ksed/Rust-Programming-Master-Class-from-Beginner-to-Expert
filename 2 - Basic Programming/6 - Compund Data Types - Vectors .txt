@@ -1,66 +1,69 @@
 fn main(){
 
-
     // -------------------------------------------------
     // 			Vectors
-    //			- Declaring vectors 
+    //			- Declaring vectors
     //	 		- Accessing elements
     //	 		- Printing elements
-    //	 		- Updating elements 
+    //	 		- Updating elements
     //	 		- Initializing with same values
     //	 		- String and char vectors
     //	 		- Vector slices
-    //	 		- Common functions 
-    //	 		- Invalid access 
+    //	 		- Common functions
+    //	 		- Invalid access
     // -------------------------------------------------
 
+    // declaring vectors
+    let mut number_vec:Vec<i32> = vec![4, 5, 6, 8, 9, 10, 11, 12, 15, 16, 12, 10];
 
+    // Printing a specific element
+    println!("The 1st element in \'number_vec\' is {}.", number_vec[0]);
 
+    // Printing the whole vector 
+    println!("The whole \'number_vec\' is {:?}.", number_vec);
 
-// declaring vectors 
-let mut number_vec:Vec<i32> = vec![4,5,6,8,9,10,11,12,15,16,12,10];  
+    // Updating a specific element 
+    number_vec[4] = 5; 
+    println!("The updated \'number_vec\' is {:?}.", number_vec);
 
-// Printing a specific element
-println!("{}",number_vec[0]);
+    // Initializing vectors with same elements 
+    let array_with_same_elements: Vec<i32> = vec![0; 10];
 
-// Printing the whole vector 
-println!("{:?}",number_vec);
+    // String vectors 
+    let mut string_vector_1: Vec<&str> = vec!["apple", "tomato", "grapes"];
+    println!("My original \'string_vector_1\' is {}.", string_vector_1);
+    let string_vector_2: Vec<&str> = vec!["Unknown"; 6];
+    string_vector_1[0] = "Kamran Azam";
+    println!("My \'string_vector_1\' is now {}.", string_vector_1);
 
-// Updating a specific element 
-number_vec[4] = 5; 
-println!("{:?}",number_vec);
+    // Character vectors
+    let char_vector: Vec<char> = vec!['a', 'p', 'p', 'l', 'e'];
+    println!("My \'char_vector\' is {}.", char_vector);
 
-// Initiallizing vectors with same elements 
-let array_with_same_elements: Vec<i32> = vec![0;10];
+    // Get subset of an vector without making a copy but by reference
+    let subset_vec = &number_vec[0..3];  // the concept of borrow
+    println!("The subset of values of the \'number_vec\' are {:?}.", subset_vec);
 
-// String vectors 
-let mut string_array_1: Vec<&str> = vec!["apple","tomato","grapes"];
-let string_array_2: Vec<&str> = vec!["Unknown";6]; 
-string_array_1[0] = "kamran azam"; 
+    // Number of elements in an vector
+    println!("The number of elements in the \'number_vec\' are {}.", number_vec.len());
 
-// Character vectors 
-let char_array: Vec<char> = vec!['a','p','p','l','e']; 
+    // Check if the elements are there or not
+    let check_index = number_vec.get(100);
+    println!("The 100th element in \'number_vec\' is {:?}.", check_index);
 
-// Get subset of an vector without making a copy but by reference
-let subset_vec = &number_vec[0..3];  // the concept of borrow 
-println!("The subset of values of the array are {:?}",subset_vec); 
+    let check_index_2 = number_vec.get(2);
+    println!("The 2nd element in \'number_vec\' is {:?}.", check_index_2);
 
-// Number of elements in an array 
-println!("Elements in the array are {}", number_vec.len());
+    // Adding elements to the vector using the push
+    number_vec.push(30);
+    number_vec.push(40);
+    println!("The new \'number_vec\' is {:?}.", number_vec);
 
-// Check if the elements are there or not 
-let check_index = number_vec.get(100); 
-println!("{:?}", check_index);
+    // Removing element from the vector
+    number_vec.remove(5);
+    println!("The array after removing the element at index 5 is {:?}.", number_vec);
 
-// Adding elements to the vector using the push 
-number_vec.push(30);
-number_vec.push(40);
-println!("The subset of values of the array are {:?}",number_vec); 
+    // Checking for an item inside a vector
+    println!("The value of 10 exist in the array? {}", number_vec.contains(&10));
 
-// Removing element from the vector 
-number_vec.remove(5); 
-println!("The array after removing the element at index 5 {:?}",number_vec);
-
-// Checking for an item inside a vector
-println!("The value of 10 exist in the array {}",number_vec.contains(&10)); 
 }
