@@ -9,17 +9,17 @@ fn new_stack(maxsize: usize) -> Vec<u32> {
 }
 
 fn pop(stack: &mut Vec<u32>) -> Option<u32> {
-    let poped_val = stack.pop();
-    println!("The poped value is {:?}", poped_val);
-    poped_val
+    let popped_val = stack.pop();
+    println!("The popped value is {:?}.", popped_val);
+    popped_val
 }
 
 fn push(stack: &mut Vec<u32>, item: u32, maxsize: usize) {
     if stack.len() == maxsize {
-        println!("Can not add more")
+        println!("Can not add more elements.");
     } else {
         stack.push(item);
-        println!("Stack: {:?}", stack);
+        println!("Stack: {:?}.", stack);
     }
 }
 
@@ -31,15 +31,15 @@ fn input() -> u32 {
     let mut n = String::new();
     std::io::stdin()
         .read_line(&mut n)
-        .expect("failed to read input.");
+        .expect("ERROR: Failed to read any input.");
 
-    let n: u32 = n.trim().parse().expect("invalid input");
+    let n: u32 = n.trim().parse().expect("ERROR: Failed to read a valid number.");
     n
 }
 
 fn main() {
-    println!("let us first create a stack for our use");
-    println!("Please mention the size of the stack ");
+    println!("Let us first create a stack for our use.");
+    println!("Please mention the size of the stack:");
     let size_stack = input();
     let mut stack = new_stack(size_stack as usize);
 
@@ -50,23 +50,23 @@ fn main() {
         let choice = input();
         match choice {
             1 => {
-                println!("Enter the value to be insert: ");
+                println!("Enter the value to be inserted: ");
                 let item = input();
                 push(&mut stack, item, size_stack as usize);
             }
 
-            2 => println!("The element which is poped is {:?}", pop(&mut stack)),
+            2 => println!("The element which is popped is {:?}.", pop(&mut stack)),
 
-            3 => println!("The elements are {:?}", stack),
+            3 => println!("The elements are {:?}.", stack),
 
-            4 => println!("The size of the stack is {}", size(&stack)),
+            4 => println!("The size of the stack is {}.", size(&stack)),
 
-            5 => break, // println!("\n Exiting"),
+            5 => break, // println!("\n Exiting."),
 
             _ => println!("\nWrong selection!!! Try again!!!"),
         }
 
-        println!("Do you want to continue 1 = Yes/ 0 = No");
+        println!("Do you want to continue? 1 = Yes/ 0 = No");
         let status = input();
         if status == 1 {
             continue;
