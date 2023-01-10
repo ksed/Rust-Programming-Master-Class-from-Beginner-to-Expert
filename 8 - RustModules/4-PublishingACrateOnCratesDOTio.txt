@@ -4,12 +4,12 @@ these lines are not going to be part of documentation
 // make sure that our code is error free and contains enough of documentation  
 
 
-// command for creating the documentation cargo doc --open 
+// command for creating the documentation `cargo doc --open`
 */
 
 
 
-// The lines below ill be part of documentation 
+// The lines below will be part of documentation
 // _______________________________________________
 
 //! # my_proj crate 
@@ -22,7 +22,7 @@ these lines are not going to be part of documentation
 /// ```  
 /// let n = 5;
 /// let answer = my_proj::square(n);
-/// assert_eq!(25,answer); 
+/// assert_eq!(25, answer); 
 /// ``` 
 /// # panics
 /// some description here
@@ -31,10 +31,9 @@ these lines are not going to be part of documentation
 /// Something in this section also 
 
 
-pub fn square(num:i32) -> i32 
-{
-    num*num
-} 
+pub fn square(num: i32) -> i32 {
+    num * num
+}
 
 
 /// Computes a cube of the input number
@@ -43,10 +42,10 @@ pub fn square(num:i32) -> i32
 /// ``` 
 /// let n = 5;
 /// let answer = my_proj::cube(n);
-/// assert_eq!(125,answer); 
+/// assert_eq!(125, answer); 
 /// ```  
-pub fn cube(num:i32) -> i32 {
-    num*num*num
+pub fn cube(num: i32) -> i32 {
+    num * num * num
 }
 
 

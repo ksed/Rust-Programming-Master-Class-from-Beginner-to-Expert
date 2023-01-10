@@ -4,7 +4,7 @@ mod person {
         pub education: String, 
     }
 
-    impl personal_info{
+    impl personal_info {
         pub fn new(new_edu: &str) -> Self {
             Self {
                 education: String::from(new_edu),
